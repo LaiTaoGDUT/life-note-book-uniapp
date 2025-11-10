@@ -20,17 +20,15 @@ export const useSystemInfoStore = defineStore('systemInfo', {
   actions: {
     initSystemInfo() {
       const systemInfo = uniApi.getSystemInfoSync();
-      if (process.env.UNI_PLATFORM === 'h5' || process.env.UNI_PLATFORM === 'app-plus') {
-        this.titleBarHeight = 48;
-      } else {
-        const isAndroid = systemInfo.osName === 'android';
-        this.titleBarHeight = isAndroid ? 48 : 44;
-      }
+
       if (systemInfo.safeArea) {
         this.statusBarHeight = systemInfo.safeArea.top;
         this.safeArea = systemInfo.safeArea;
         const rect = uniApi.getMenuButtonBoundingClientRect();
         this.menuButtonWidth = systemInfo.windowWidth - rect.left;
+        this.titleBarHeight = ((rect.top - systemInfo.safeArea.top) * 2) + rect.height;
+      } else {
+        this.titleBarHeight = 60;
       }
     }
   }

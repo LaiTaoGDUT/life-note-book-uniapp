@@ -5,9 +5,10 @@
   >
     <view class="header-banner-bg">
       <view
-        v-for="item in bannerList"
+        v-for="(item, idx) in bannerList"
         :key="item"
         class="header-banner-bg-item"
+        :class="{ active: idx === activeBannerIdx }"
       >
         <image
           :src="item"
@@ -24,7 +25,9 @@
 <script setup lang="ts">
 import {
   ref,
-  computed
+  computed,
+  onMounted,
+  onUnmounted
 } from 'vue';
 import HeaderNavigation from '@/components/HeaderNavigation.vue';
 import { useSystemInfoStore } from '@/stores/systemInfo';
@@ -40,6 +43,23 @@ const bannerList = ref([
   'https://loveli.kikiw.cn/Lovefolder/20241025165327_671b5c87d3025.webp',
   'https://loveli.kikiw.cn/Lovefolder/20241025165328_671b5c8821cae.webp'
 ]);
+
+const activeBannerIdx = ref(0);
+
+let switchBannerTimer: any = 0;
+const timeSwitchBanner = () => {
+  switchBannerTimer = setTimeout(() => {
+    activeBannerIdx.value = (activeBannerIdx.value + 1) % bannerList.value.length;
+    timeSwitchBanner();
+  }, 5000);
+};
+
+onMounted(() => {
+  timeSwitchBanner();
+});
+onUnmounted(() => {
+  clearTimeout(switchBannerTimer);
+});
 </script>
 
 <style scoped lang="scss">
@@ -55,9 +75,27 @@ const bannerList = ref([
     width: 100%;
     height: 100%;
 
-    .header-banner-bg-item {
+    &::before {
+      content: "";
+      position: absolute;
       width: 100%;
       height: 100%;
+      background: rgba(0, 0, 0, 0.1);
+      z-index: 99;
+    }
+
+    .header-banner-bg-item {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 0.8s ease-in-out;
+
+      &.active {
+        opacity: 1;
+      }
 
       .header-banner-bg-item-img {
         width: 100%;

@@ -102,7 +102,7 @@ const back = () => {
 
   .header-navigation__left {
     position: relative;
-    padding-left: 16px;
+    padding-left: 7px;
     width: 96px;
     display: flex;
     flex-direction: row;
@@ -112,8 +112,8 @@ const back = () => {
   }
 
   .header-navigation__center {
-    font-size: 32rpx;
-    line-height: 36rpx;
+    font-size: 34rpx;
+    line-height: 38rpx;
     text-align: center;
     position: relative;
     display: flex;
