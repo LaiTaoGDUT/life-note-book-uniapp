@@ -61,9 +61,10 @@ const props = defineProps({
 });
 
 const headerNavigationInnerStyle = computed(() => ({
-  height: `${systemInfo.statusBarHeight + systemInfo.titleBarHeight}px`,
+  height: `${systemInfo.statusBarHeight + systemInfo.titleBarHeight + (systemInfo.isH5OrApp ? 0 : 8)}px`,
   paddingTop: `${systemInfo.statusBarHeight}px`,
-  paddingRight: `${systemInfo.menuButtonWidth}px`
+  paddingRight: `${systemInfo.menuButtonWidth}px`,
+  paddingBottom: `${systemInfo.isH5OrApp ? 0 : 8}px`
 }));
 
 const headerNavigationLeftStyle = computed(() => ({

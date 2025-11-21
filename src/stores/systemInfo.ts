@@ -4,6 +4,7 @@ import uniApi from '@/uniApi';
 export const useSystemInfoStore = defineStore('systemInfo', {
 	state: () => {
 		return {
+      isH5OrApp: process.env.UNI_PLATFORM === 'h5' || process.env.UNI_PLATFORM === 'app-plus',
       statusBarHeight: 0,
       titleBarHeight: 0,
       menuButtonWidth: 0,

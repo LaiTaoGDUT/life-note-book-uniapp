@@ -136,7 +136,7 @@ const handleProfileClick = (avatar: string) => {
 const systemInfo = useSystemInfoStore();
 
 const bannerStyle = computed(() => ({
-  paddingTop: `${systemInfo.statusBarHeight + systemInfo.titleBarHeight}px`,
+  paddingTop: `${systemInfo.statusBarHeight + systemInfo.titleBarHeight + (systemInfo.isH5OrApp ? 0 : 8)}px`,
 }));
 
 const bannerList = ref([

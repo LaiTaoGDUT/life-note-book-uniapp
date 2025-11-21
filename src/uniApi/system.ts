@@ -4,7 +4,7 @@ export const getSystemInfoSync = () => {
     return cacheSystemInfo;
   }
   // UniApp 环境
-  if (import.meta.env.VITE_PLATFORM !== 'h5' && import.meta.env.VITE_PLATFORM !== 'h5') {
+  if (process.env.UNI_PLATFORM !== 'h5' && process.env.UNI_PLATFORM !== 'app-plus') {
     cacheSystemInfo = uni.getSystemInfoSync();
   } else {
     // H5 环境
