@@ -86,6 +86,7 @@ const back = () => {
   flex: none;
   background: #ffffff9e;
   backdrop-filter: blur(20px);
+  border-bottom: 3rpx solid #e5e5e5;
 
   .header-navigation__inner {
     position: relative;
