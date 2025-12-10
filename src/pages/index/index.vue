@@ -1,16 +1,18 @@
 <template>
   <view class="page-index">
-    <header-banner />
+    <header-navigation title="蚂蚁小羊的日常"></header-navigation>
 	</view>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import HeaderBanner from '@/components/HeaderBanner.vue';
+import HeaderNavigation from "@/components/HeaderNavigation.vue";
 </script>
 
 <style scoped lang="scss">
-.page-index {
+@import '@/styles/page-common.scss';
 
+.page-index {
+  @extend .page-common-container;
 }
 </style>
