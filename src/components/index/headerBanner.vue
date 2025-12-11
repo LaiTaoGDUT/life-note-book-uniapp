@@ -105,6 +105,7 @@ const recipeCnt = ref(0);
 
   .swiper-item-desc {
     font-size: 32rpx;
+    font-weight: bold;
     color: #fff;
     margin-top: 12rpx;
     text-shadow: 0 4rpx 4rpx rgb(0 0 0 / 35%);

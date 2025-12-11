@@ -107,6 +107,7 @@ const back = () => {
     border-radius: 50%;
     background: #fff;
     margin: 0 12rpx 4rpx 0;
+    box-shadow: 0 2rpx 6rpx rgb(0 0 0 / 25%);
   }
 
   .header-navigation__buttons {
@@ -116,8 +117,7 @@ const back = () => {
   }
 
   .header-navigation__title {
-    font-size: 36rpx;
-    line-height: 40rpx;
+    font-size: 32rpx;
     text-align: center;
     position: relative;
     display: flex;
